@@ -6,6 +6,7 @@
     // -- add cutscenes (https://crates.io/crates/tplay)
     // -- if above not feasible, preload ASCII art
     // -- enemy difficulty scale ([E]z, [M]edium, [A]dvanced)
+    // -- add state checker for BoxState
 
 use std::io;
 use colored::*;
@@ -45,40 +46,148 @@ fn player_turn(mut playgrid:Grid) -> Grid {
 
         match player_input_num {
             1 => {
-                playgrid.box1 = BoxState::Cross;
-                break;
+                match playgrid.box1 {
+                    BoxState::Empty => {
+                        playgrid.box1 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             2 => {
-                playgrid.box2 = BoxState::Cross;
-                break;
+                match playgrid.box2 {
+                    BoxState::Empty => {
+                        playgrid.box2 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             3 => {
-                playgrid.box3 = BoxState::Cross;
-                break;
+                match playgrid.box3 {
+                    BoxState::Empty => {
+                        playgrid.box3 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             4 => {
-                playgrid.box4 = BoxState::Cross;
-                break;
+                match playgrid.box4 {
+                    BoxState::Empty => {
+                        playgrid.box4 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             5 => {
-                playgrid.box5 = BoxState::Cross;
-                break;
+                match playgrid.box5 {
+                    BoxState::Empty => {
+                        playgrid.box5 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             6 => {
-                playgrid.box6 = BoxState::Cross;
-                break;
+                match playgrid.box6 {
+                    BoxState::Empty => {
+                        playgrid.box6 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             7 => {
-                playgrid.box7 = BoxState::Cross;
-                break;
+                match playgrid.box7 {
+                    BoxState::Empty => {
+                        playgrid.box7 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             8 => {
-                playgrid.box8 = BoxState::Cross;
-                break;
+                match playgrid.box8 {
+                    BoxState::Empty => {
+                        playgrid.box8 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             },
             9 => {
-                playgrid.box9 = BoxState::Cross;
-                break;
+                match playgrid.box9 {
+                    BoxState::Empty => {
+                        playgrid.box9 = BoxState::Cross;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        println!("{}", "Square already taken! Choose an empty square!".red());
+                        continue;
+                    },
+                }
             }
             _ => {
                 //error handling
@@ -91,7 +200,11 @@ fn player_turn(mut playgrid:Grid) -> Grid {
     playgrid
 }
 
+fn enemy_turn(playgrid:Grid) -> Grid {
+    // add stuff here
+}
+
 fn main() {
-    let mut playgrid:Grid = Grid{box1:BoxState::Empty, box2:BoxState::Empty, box3:BoxState::Empty, box4:BoxState::Empty, box5:BoxState::Empty, box6:BoxState::Empty, box7:BoxState::Empty, box8:BoxState::Empty, box9:BoxState::Empty};
+    let mut playgrid:Grid = Grid{box1:BoxState::Circle, box2:BoxState::Cross, box3:BoxState::Empty, box4:BoxState::Empty, box5:BoxState::Empty, box6:BoxState::Empty, box7:BoxState::Empty, box8:BoxState::Empty, box9:BoxState::Empty};
     println!("{:?}", player_turn(playgrid));
 }

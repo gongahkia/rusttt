@@ -9,7 +9,15 @@
     // -- add state checker for BoxState
 
 use std::io;
+use rand::Rng;
 use colored::*;
+
+#[derive(Debug)]
+enum Difficulty {
+    Easy,
+    Medium,
+    Advanced
+}
 
 #[derive(Debug)]
 // player input is cross [X]
@@ -200,9 +208,145 @@ fn player_turn(mut playgrid:Grid) -> Grid {
     playgrid
 }
 
-fn enemy_turn(playgrid:Grid) -> Grid {
-    // add stuff here
+fn beginner_enemy_turn(mut playgrid:Grid) -> Grid {
+    loop {
+        let beginner_enemy_move:i8 = rand::thread_rng().gen_range(1..10);
+        match beginner_enemy_move {
+            1 => {
+                match playgrid.box1 {
+                    BoxState::Empty => {
+                        playgrid.box1 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            2 => {
+                match playgrid.box2 {
+                    BoxState::Empty => {
+                        playgrid.box2 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            3 => {
+                match playgrid.box3 {
+                    BoxState::Empty => {
+                        playgrid.box3 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            4 => {
+                match playgrid.box4 {
+                    BoxState::Empty => {
+                        playgrid.box4 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            5 => {
+                match playgrid.box5 {
+                    BoxState::Empty => {
+                        playgrid.box5 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            6 => {
+                match playgrid.box6 {
+                    BoxState::Empty => {
+                        playgrid.box6 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            7 => {
+                match playgrid.box7 {
+                    BoxState::Empty => {
+                        playgrid.box7 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            8 => {
+                match playgrid.box8 {
+                    BoxState::Empty => {
+                        playgrid.box8 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            9 => {
+                match playgrid.box9 {
+                    BoxState::Empty => {
+                        playgrid.box9 = BoxState::Circle;
+                        break;
+                    },
+                    BoxState::Cross => {
+                        continue;
+                    },
+                    BoxState::Circle => {
+                        continue;
+                    },
+                }
+            },
+            _ => (),
+        }
+    }
+    playgrid
 }
+
+/*fn display_grid(playgrid:Grid) -> &str {
+    // fill this out later!
+}*/
 
 fn main() {
     let mut playgrid:Grid = Grid{box1:BoxState::Circle, box2:BoxState::Cross, box3:BoxState::Empty, box4:BoxState::Empty, box5:BoxState::Empty, box6:BoxState::Empty, box7:BoxState::Empty, box8:BoxState::Empty, box9:BoxState::Empty};
